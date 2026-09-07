@@ -10,20 +10,20 @@ password = ""
 
 uppercase_letters = input("Do you want uppercase letters? ")
 
-if uppercase_letters == "yes":
+if uppercase_letters.strip().lower() == "yes":
 
     alphabet += string.ascii_uppercase
 
 
 numbers = input ("Do you want numbers? ")
 
-if numbers == "yes":
+if numbers.strip().lower() == "yes":
 
     alphabet += string.digits
 
 symbols = input ("Do you want symbols? ")
 
-if symbols == "yes":
+if symbols.strip().lower() == "yes":
 
     alphabet += string.punctuation 
 
@@ -33,12 +33,10 @@ for i in range (int(input("How long do you want your password to be? "))):
     password += random.choice(alphabet)
 
 
-print (f"\nGenerated Password: {password}")
+#print (f"\nGenerated Password: {password}")
 
-print (f"Password Length: {len(password.strip())} characters")
+#print (f"Password Length: {len(password.strip())} characters")
 
-
-print(f"Password Length: {len(password.strip())} characters") 
 
 # Strength Checker
 
@@ -53,7 +51,7 @@ for char in password:
 
         found_lowercase = True 
 
-
+    
 if found_lowercase:
 
     print ("Contains Lowercase: YES")
@@ -121,3 +119,44 @@ else:
 
 print (f"This is your password: {password}")
 
+
+#Calculate Password Strength
+
+score = 0 
+
+if found_lowercase: score += 1
+if found_uppercase: score += 1
+if found_numbers:   score += 1
+if found_symbols:   score += 1
+
+#Adds a point's depending on the password length
+
+if len (password) >= 8:
+
+    score += 1
+
+if len (password) >= 12:
+
+    score += 2
+
+if len (password) >= 16:
+
+    score += 3
+
+print("\n--- PASSWORD STRENGTH ---")
+
+if score <= 2:
+
+    print ("Password strength: WEAK")
+
+elif score <= 4:
+
+    print ("Password strength: MODERATE")
+
+elif score <= 6:
+
+    print ("Password strength: STRONG")
+
+else:
+
+    print ("Password strength: VERY STRONG")
