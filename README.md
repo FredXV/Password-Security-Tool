@@ -1,20 +1,29 @@
-# Password Generator (Work in progress)
+# Password Security Tool
 
-A python tool to generate secure passwords, with a strenght checker to be added later which will be built in.
+A python command line tool to generate secure passwords and check password strength.
 
-## Current Status
-Basic random password generator - DONE
+##Features 
 
-User chosen password length - DONE
+Random password generation with user controlled length - DONE
 
-Option to include symbols, lower and upper case
+Option to include uppercase letters, numbers and symbols bassed on user preference - DONE
 
-Password strength checker
+Basic password strength checker - Reports length and if a password contains lowercase, uppercase, numbers and symbols - DONE
 
-Combine into a menu
+Scoring system to display strength of the password to user 
 
-Potentially display any problems with the password
+Combine generator and checker into a menu
 
+## What I learned
 
-## How to run (current version)
+Structuring conditional logic to build a character set bassed off user preferences
+
+Using flag variables and llops to check for specific character types
+
+Working with Python string modules (ascii_lowercase, ascii_uppercase, digits, punctuation
+
+Git workflows (branching, merge conflicts and resolving diverged history)
+
+## How to run
+
 python "Password Security Tool.py"
