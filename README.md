@@ -2,15 +2,15 @@
 
 A python command line tool to generate secure passwords and check password strength.
 
-##Features 
+## Features 
 
-Random password generation with user controlled length - DONE
+Random password generation with user controlled length 
 
-Option to include uppercase letters, numbers and symbols bassed on user preference - DONE
+Option to include uppercase letters, numbers and symbols bassed on user preference 
 
-Basic password strength checker - Reports length and if a password contains lowercase, uppercase, numbers and symbols - DONE
+Automatically inspects the generated password and reports if it contains lowercase letters, uppercase letters, numbers and symbols
 
-Scoring system to display strength of the password to user 
+Scoring system that evaluates how complex the password is and displays a rating to the user (Weak, Moderate, Strong or Very Strong)
 
 Combine generator and checker into a menu
 
