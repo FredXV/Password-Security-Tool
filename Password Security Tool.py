@@ -3,48 +3,50 @@ import string
 
 
 #Password Generator
+def generate_password():
 
-alphabet = string.ascii_lowercase
+    alphabet = string.ascii_lowercase
 
-password = ""
+    password = ""
 
-uppercase_letters = input("Do you want uppercase letters? ")
+    uppercase_letters = input("Do you want uppercase letters? ")
 
-if uppercase_letters.strip().lower() == "yes":
+    if uppercase_letters.strip().lower() == "yes":
 
-    alphabet += string.ascii_uppercase
+        alphabet += string.ascii_uppercase
 
 
-numbers = input ("Do you want numbers? ")
+    numbers = input ("Do you want numbers? ")
 
-if numbers.strip().lower() == "yes":
+    if numbers.strip().lower() == "yes":
 
-    alphabet += string.digits
+        alphabet += string.digits
 
-symbols = input ("Do you want symbols? ")
+    symbols = input ("Do you want symbols? ")
 
-if symbols.strip().lower() == "yes":
+    if symbols.strip().lower() == "yes":
 
-    alphabet += string.punctuation 
+        alphabet += string.punctuation 
 
-valid_input = False
+    valid_input = False
 
-while valid_input == False:
-    password_length = input("How long do you want your password to be? ")
+    while valid_input == False:
+        password_length = input("How long do you want your password to be? ")
 
-    try: 
-        password_length = int(password_length)
+        try: 
+            password_length = int(password_length)
 
-        valid_input = True
+            valid_input = True
 
-    except ValueError:
+        except ValueError:
 
-        print ("Please enter a valid number")
+            print ("Please enter a valid number")
 
-for i in range (password_length):
-        
-    password += random.choice(alphabet)
+    for i in range (password_length):
+            
+        password += random.choice(alphabet)
 
+    return password 
 
 
 # Strength Checker
@@ -52,120 +54,155 @@ for i in range (password_length):
 
 #Checks if password has a lowercase letter anywhere in it
 
-found_lowercase = False
+def check_strength(password):
 
-for char in password:
+    found_lowercase = False
 
-    if char.islower():
+    for char in password:
 
-        found_lowercase = True 
+        if char.islower():
 
-    
-if found_lowercase:
+            found_lowercase = True 
 
-    print ("Contains Lowercase: YES")
+        
+    if found_lowercase:
 
-else:
+        print ("Contains Lowercase: YES")
 
-    print ("Contains Lowercase: NO")
+    else:
 
-#Checks if password has an uppercase letter anywhere in it
+        print ("Contains Lowercase: NO")
 
-
-found_uppercase = False
-
-for char in password:
-
-    if char.isupper():
-
-        found_uppercase = True
-
-if found_uppercase:
-
-    print ("Contains Uppercase: YES")
-
-else:
-
-    print ("Contains Uppercase: NO")
-
-#Checks if password has a number anywhere in it
-
-found_numbers = False
-
-for char in password:
-
-    if char.isdigit():
-
-        found_numbers = True
-
-if found_numbers:
-
-    print ("Contains Numbers: YES")
-
-else:
-
-    print ("Contains Numbers: NO")
+    #Checks if password has an uppercase letter anywhere in it
 
 
-#Checks if password has symbols anywhere in it
+    found_uppercase = False
 
-found_symbols = False
+    for char in password:
 
-for char in password:
+        if char.isupper():
 
-  if char in string.punctuation:
+            found_uppercase = True
 
-    found_symbols = True
+    if found_uppercase:
 
-if found_symbols:
+        print ("Contains Uppercase: YES")
 
-    print ("Contains Symbols: YES")
+    else:
 
-else:
+        print ("Contains Uppercase: NO")
 
-    print("Contains Symbols: NO")
+    #Checks if password has a number anywhere in it
+
+    found_numbers = False
+
+    for char in password:
+
+        if char.isdigit():
+
+            found_numbers = True
+
+    if found_numbers:
+
+        print ("Contains Numbers: YES")
+
+    else:
+
+        print ("Contains Numbers: NO")
 
 
-print (f"This is your password: {password}")
+    #Checks if password has symbols anywhere in it
+
+    found_symbols = False
+
+    for char in password:
+
+        if char in string.punctuation:
+
+            found_symbols = True
+
+    if found_symbols:
+
+        print ("Contains Symbols: YES")
+
+    else:
+
+        print("Contains Symbols: NO")
 
 
-#Calculate Password Strength
+    print (f"This is your password: {password}")
 
-score = 0 
 
-if found_lowercase: score += 1
-if found_uppercase: score += 1
-if found_numbers:   score += 1
-if found_symbols:   score += 1
+    #Calculate Password Strength
 
-#Adds a point's depending on the password length
+    score = 0 
 
-if len (password) >= 8:
+    if found_lowercase: score += 1
+    if found_uppercase: score += 1
+    if found_numbers:   score += 1
+    if found_symbols:   score += 1
 
-    score += 1
+    #Adds a point's depending on the password length
 
-if len (password) >= 12:
+    if len (password) >= 8:
 
-    score += 2
+        score += 1
 
-if len (password) >= 16:
+    if len (password) >= 12:
 
-    score += 3
+        score += 2
 
-print("\n--- PASSWORD STRENGTH ---")
+    if len (password) >= 16:
 
-if score <= 2:
+        score += 3
 
-    print ("Password strength: WEAK")
+    print("\n--- PASSWORD STRENGTH ---")
 
-elif score <= 4:
+    if score <= 2:
 
-    print ("Password strength: MODERATE")
+        print ("Password strength: WEAK")
 
-elif score <= 6:
+    elif score <= 4:
 
-    print ("Password strength: STRONG")
+        print ("Password strength: MODERATE")
 
-else:
+    elif score <= 6:
 
-    print ("Password strength: VERY STRONG")
+        print ("Password strength: STRONG")
+
+    else:
+
+        print ("Password strength: VERY STRONG")
+
+
+while True:
+
+    choice = input ("Do you want to generate a password or check one? ")
+
+    if choice.strip().lower() == "generate":
+
+        new_password = generate_password()
+
+        check_strength(new_password)
+
+    elif choice.strip().lower() == "check one":
+
+        existing_password = input ("Enter the password to check: ")
+
+        check_strength(existing_password)
+
+    elif choice.strip().lower() == "check":
+
+        existing_password = input ("Enter the password to check: ")
+        
+        check_strength(existing_password)
+
+    else:
+
+        print ("Please enter Generate or Check one")
+
+    again = input ("\nWould you like to do run agian? (y/n): ")
+
+    if again.strip().lower() != "y":
+
+        break
