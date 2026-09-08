@@ -27,15 +27,24 @@ if symbols.strip().lower() == "yes":
 
     alphabet += string.punctuation 
 
-    
-for i in range (int(input("How long do you want your password to be? "))):
+valid_input = False
 
+while valid_input == False:
+    password_length = input("How long do you want your password to be? ")
+
+    try: 
+        password_length = int(password_length)
+
+        valid_input = True
+
+    except ValueError:
+
+        print ("Please enter a valid number")
+
+for i in range (password_length):
+        
     password += random.choice(alphabet)
 
-
-#print (f"\nGenerated Password: {password}")
-
-#print (f"Password Length: {len(password.strip())} characters")
 
 
 # Strength Checker
