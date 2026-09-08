@@ -20,7 +20,7 @@ Structuring conditional logic to build a character set bassed off user preferenc
 
 Using flag variables and loops to check for specific character types
 
-Working with Python 'string' modules (ascii_lowercase, ascii_uppercase, digits, punctuation
+Working with Python 'string' modules (ascii_lowercase, ascii_uppercase, digits, punctuation)
 
 Writing functions with parameters and return values and combining them into a menu
 
